@@ -1,0 +1,59 @@
+/* Vegetables Industry Theme Style Sheet */
+
+html[data-industry-theme="vegetables"] {
+    // Farm Organic Styles
+    --wood-texture-bg: #EFEBE9;
+    --leaf-color: #4CAF50;
+    
+    // Customize page spacing
+    .s_banner, .s_text_image, .s_three_columns {
+        padding-top: var(--spacing-scale-loose, 4rem) !important;
+        padding-bottom: var(--spacing-scale-loose, 4rem) !important;
+    }
+
+    // Leaf/Organic Badge Styling
+    .organic-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background-color: rgba(76, 175, 80, 0.15) !important;
+        color: #2E7D32 !important;
+        border: 1px solid rgba(76, 175, 80, 0.3);
+        border-radius: 100px !important;
+        padding: 6px 12px;
+        font-size: 13px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    // Wood texture Card
+    .wood-card {
+        background-color: var(--wood-texture-bg) !important;
+        border: 1px solid #D7CCC8 !important;
+        border-radius: 16px !important;
+    }
+
+    // Specific product grid overrides
+    .oe_product {
+        border-radius: 16px !important;
+        overflow: hidden;
+        border: 2px solid rgba(46,125,50,0.08) !important;
+        
+        .oe_product_image {
+            transition: transform 0.5s ease;
+        }
+
+        &:hover .oe_product_image {
+            transform: scale(1.05);
+        }
+    }
+    
+    // Farmer Story block overlay
+    .farmer-story-section {
+        background: linear-gradient(rgba(46,125,50,0.85), rgba(46,125,50,0.95)), url('/website_industry_theme/static/src/img/farm-bg.jpg') no-repeat center/cover;
+        color: #ffffff;
+        border-radius: 24px;
+        padding: 4rem 2rem;
+    }
+}

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+    <t t-name="website_industry_theme.ThemeSettingsAction">
+        <div class="h-100 d-flex flex-column bg-light" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+            
+            <!-- TOP BAR CONTROL CENTER -->
+            <div class="bg-white border-bottom py-3 px-4 d-flex align-items-center justify-content-between shadow-sm" style="z-index: 10;">
+                <div class="d-flex align-items-center gap-3">
+                    <span class="fs-4 fw-bold text-dark"><i class="fa fa-magic text-primary me-2"/>Theme Control Center</span>
+                    <div class="d-flex align-items-center gap-2 border-start ps-3 ms-2">
+                        <label class="text-muted small mb-0 fw-semibold">Website:</label>
+                        <select class="form-select form-select-sm" style="width: auto;" t-on-change="onWebsiteChange">
+                            <t t-foreach="state.websites" t-as="web" t-key="web.id">
+                                <option t-att-value="web.id" t-att-selected="web.id === state.activeWebsiteId"><t t-esc="web.name"/></option>
+                            </t>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- VIEWPORT RESPONSIVE CONTROLS -->
+                <div class="d-flex align-items-center bg-light rounded-pill p-1">
+                    <button class="btn btn-sm rounded-pill px-3 py-1 border-0" 
+                            t-att-class="state.viewportMode === 'desktop' ? 'btn-primary shadow-sm' : 'text-secondary btn-light'"
+                            t-on-click="() => this.setViewport('desktop')">
+                        <i class="fa fa-desktop me-1"/> Desktop
+                    </button>
+                    <button class="btn btn-sm rounded-pill px-3 py-1 border-0 ms-1" 
+                            t-att-class="state.viewportMode === 'tablet' ? 'btn-primary shadow-sm' : 'text-secondary btn-light'"
+                            t-on-click="() => this.setViewport('tablet')">
+                        <i class="fa fa-tablet me-1"/> Tablet
+                    </button>
+                    <button class="btn btn-sm rounded-pill px-3 py-1 border-0 ms-1" 
+                            t-att-class="state.viewportMode === 'mobile' ? 'btn-primary shadow-sm' : 'text-secondary btn-light'"
+                            t-on-click="() => this.setViewport('mobile')">
+                        <i class="fa fa-mobile me-1"/> Mobile
+                    </button>
+                </div>
+
+                <!-- MAIN ACTIONS -->
+                <div class="d-flex align-items-center gap-2">
+                    <select class="form-select border-primary" style="width: 200px;" t-on-change="onThemeChange">
+                        <t t-foreach="state.themes" t-as="theme" t-key="theme.id">
+                            <option t-att-value="theme.id" t-att-selected="theme.id === state.selectedThemeId"><t t-esc="theme.name"/></option>
+                        </t>
+                    </select>
+                    <button class="btn btn-primary d-flex align-items-center gap-2" t-on-click="applyTheme">
+                        <i class="fa fa-check-circle"/> Apply Theme
+                    </button>
+                </div>
+            </div>
+
+            <!-- DASHBOARD BODY -->
+            <div class="flex-grow-1 d-flex overflow-hidden">
+                
+                <!-- SIDEBAR DETAILS PANEL -->
+                <div class="bg-white border-end p-4 overflow-auto" style="width: 320px; min-width: 320px; z-index: 5;">
+                    <t t-if="selectedTheme">
+                        <div class="mb-4">
+                            <span class="text-uppercase tracking-wider text-muted small d-block mb-1">Active Industry Theme</span>
+                            <h2 class="h4 fw-bold text-dark"><t t-esc="selectedTheme.name"/></h2>
+                            <p class="text-muted small">Code: <t t-esc="selectedTheme.code"/></p>
+                        </div>
+
+                        <hr class="my-4"/>
+
+                        <!-- PALETTE PREVIEW -->
+                        <div class="mb-4">
+                            <h5 class="fw-semibold text-dark mb-3"><i class="fa fa-paint-brush me-2 text-primary"/>Color Palette</h5>
+                            <div class="d-flex flex-column gap-2">
+                                <div class="d-flex align-items-center justify-content-between p-2 rounded border" style="background-color: #fafafa;">
+                                    <span class="small text-secondary">Primary Color</span>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <span class="small text-muted font-monospace"><t t-esc="selectedTheme.palette.primary_color"/></span>
+                                        <span class="d-inline-block rounded border" t-attf-style="background-color: #{selectedTheme.palette.primary_color}; width: 24px; height: 24px;"/>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between p-2 rounded border" style="background-color: #fafafa;">
+                                    <span class="small text-secondary">Secondary Color</span>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <span class="small text-muted font-monospace"><t t-esc="selectedTheme.palette.secondary_color"/></span>
+                                        <span class="d-inline-block rounded border" t-attf-style="background-color: #{selectedTheme.palette.secondary_color}; width: 24px; height: 24px;"/>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between p-2 rounded border" style="background-color: #fafafa;">
+                                    <span class="small text-secondary">Accent Color</span>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <span class="small text-muted font-monospace"><t t-esc="selectedTheme.palette.accent_color"/></span>
+                                        <span class="d-inline-block rounded border" t-attf-style="background-color: #{selectedTheme.palette.accent_color}; width: 24px; height: 24px;"/>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between p-2 rounded border" style="background-color: #fafafa;">
+                                    <span class="small text-secondary">Background</span>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <span class="small text-muted font-monospace"><t t-esc="selectedTheme.palette.bg_color"/></span>
+                                        <span class="d-inline-block rounded border" t-attf-style="background-color: #{selectedTheme.palette.bg_color}; width: 24px; height: 24px;"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="my-4"/>
+
+                        <!-- TYPOGRAPHY PREVIEW -->
+                        <div class="mb-4">
+                            <h5 class="fw-semibold text-dark mb-3"><i class="fa fa-font me-2 text-primary"/>Typography Specimen</h5>
+                            <div class="p-3 border rounded text-center" t-attf-style="font-family: #{selectedTheme.font.font_family}; background-color: #ffffff;">
+                                <div class="fs-2 mb-1">Aa</div>
+                                <div class="small text-muted font-monospace"><t t-esc="selectedTheme.font.name"/></div>
+                            </div>
+                        </div>
+
+                        <hr class="my-4"/>
+
+                        <!-- LAYOUT DETAILS -->
+                        <div class="mb-4">
+                            <h5 class="fw-semibold text-dark mb-3"><i class="fa fa-th-large me-2 text-primary"/>Layout Rules</h5>
+                            <ul class="list-unstyled d-flex flex-column gap-2 small text-secondary">
+                                <li class="d-flex justify-content-between py-1 border-bottom">
+                                    <span>Border Radius</span>
+                                    <strong class="text-dark"><t t-esc="selectedTheme.layout.border_radius"/></strong>
+                                </li>
+                                <li class="d-flex justify-content-between py-1 border-bottom">
+                                    <span>Button Shape</span>
+                                    <strong class="text-dark text-capitalize"><t t-esc="selectedTheme.layout.button_style"/></strong>
+                                </li>
+                                <li class="d-flex justify-content-between py-1 border-bottom">
+                                    <span>Base Shadows</span>
+                                    <strong class="text-dark"><t t-esc="selectedTheme.layout.shadow_style"/></strong>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <hr class="my-4"/>
+
+                        <!-- QUICK ACTIONS -->
+                        <div class="mb-2">
+                            <h5 class="fw-semibold text-dark mb-3"><i class="fa fa-cogs me-2 text-primary"/>Admin Operations</h5>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-sm btn-outline-secondary text-start" t-on-click="duplicateSelectedTheme">
+                                    <i class="fa fa-copy me-2"/> Clone Theme Configuration
+                                </button>
+                                <button class="btn btn-sm btn-outline-secondary text-start" t-on-click="exportSelectedTheme">
+                                    <i class="fa fa-download me-2"/> Export Theme JSON
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger text-start" t-on-click="resetSelectedTheme">
+                                    <i class="fa fa-refresh me-2"/> Reset Theme to Defaults
+                                </button>
+                            </div>
+                        </div>
+                    </t>
+                    <t t-else="">
+                        <p class="text-muted text-center py-5">Please configure an active theme first.</p>
+                    </t>
+                </div>
+
+                <!-- DYNAMIC PREVIEW IFRAME WRAPPER -->
+                <div class="flex-grow-1 d-flex align-items-center justify-content-center p-4 bg-secondary-subtle overflow-auto">
+                    
+                    <!-- Viewport: Desktop -->
+                    <div t-if="state.viewportMode === 'desktop'" class="w-100 h-100 border bg-white shadow-lg rounded" style="transition: all 0.3s ease;">
+                        <iframe t-att-src="state.iframeUrl" class="w-100 h-100 border-0"/>
+                    </div>
+
+                    <!-- Viewport: Tablet -->
+                    <div t-if="state.viewportMode === 'tablet'" class="border bg-dark shadow-lg rounded-4 p-3 d-flex flex-column align-items-center" style="width: 800px; height: 95%; transition: all 0.3s ease;">
+                        <!-- Tablet Header / Camera mockup -->
+                        <div class="d-flex align-items-center justify-content-center mb-2" style="width: 100%; height: 20px;">
+                            <div class="bg-secondary rounded-circle" style="width: 8px; height: 8px;"/>
+                        </div>
+                        <div class="flex-grow-1 w-100 bg-white rounded overflow-hidden">
+                            <iframe t-att-src="state.iframeUrl" class="w-100 h-100 border-0"/>
+                        </div>
+                    </div>
+
+                    <!-- Viewport: Mobile -->
+                    <div t-if="state.viewportMode === 'mobile'" class="border bg-dark shadow-lg rounded-5 p-3 d-flex flex-column align-items-center" style="width: 410px; height: 90%; transition: all 0.3s ease; position: relative;">
+                        <!-- Mobile Notch -->
+                        <div class="bg-dark border border-secondary rounded-bottom-4 mb-2 d-flex justify-content-center" style="width: 140px; height: 24px; position: absolute; top: 0; z-index: 99;">
+                            <div class="bg-secondary rounded-circle mt-1" style="width: 6px; height: 6px;"/>
+                        </div>
+                        <div class="flex-grow-1 w-100 bg-white rounded-4 overflow-hidden mt-3">
+                            <iframe t-att-src="state.iframeUrl" class="w-100 h-100 border-0"/>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </t>
+</templates>

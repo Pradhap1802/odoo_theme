@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- CLIENT ACTION REGISTRATION -->
+    <record id="action_website_theme_settings" model="ir.actions.client">
+        <field name="name">Theme Control Center</field>
+        <field name="tag">website_industry_theme.theme_settings</field>
+    </record>
+
+    <!-- THEME VIEWS -->
+    <record id="industry_theme_view_form" model="ir.ui.view">
+        <field name="name">industry.theme.form</field>
+        <field name="model">industry.theme</field>
+        <field name="arch" type="xml">
+            <form string="Industry Theme">
+                <header>
+                    <button name="action_duplicate" string="Clone Theme" type="object" class="btn-primary"/>
+                    <button name="action_export_theme" string="Export JSON" type="object" class="btn-secondary"/>
+                    <button name="action_reset" string="Reset to Default Style" type="object" class="btn-secondary" confirm="Are you sure you want to reset this theme's configurations to default?"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" placeholder="Theme Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Theme Metadata">
+                            <field name="code"/>
+                            <field name="category_id"/>
+                            <field name="active"/>
+                        </group>
+                        <group string="Style Components">
+                            <field name="palette_id"/>
+                            <field name="font_id"/>
+                            <field name="layout_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="General Theme Layout" name="theme_layout">
+                            <group>
+                                <group string="Structural Components">
+                                    <field name="header_layout"/>
+                                    <field name="footer_layout"/>
+                                    <field name="shop_layout"/>
+                                </group>
+                                <group string="Cards &amp; Grids">
+                                    <field name="product_grid"/>
+                                    <field name="product_card_style"/>
+                                    <field name="category_card_style"/>
+                                </group>
+                            </group>
+                            <group string="Blocks &amp; Styles">
+                                <group>
+                                    <field name="blog_style"/>
+                                    <field name="newsletter_style"/>
+                                </group>
+                                <group>
+                                    <field name="hover_effects_style"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Add-ons &amp; Widgets" name="addons">
+                            <group>
+                                <group string="WhatsApp Floating Widget">
+                                    <field name="whatsapp_enabled"/>
+                                    <field name="whatsapp_number" invisible="not whatsapp_enabled"/>
+                                </group>
+                                <group string="Navigation Enhancements">
+                                    <field name="back_to_top_enabled"/>
+                                    <field name="loading_animation_enabled"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Banners &amp; Custom Blocks" name="banners_blocks">
+                            <group>
+                                <field name="banner_ids" widget="many2many_tags"/>
+                                <field name="block_ids" widget="many2many_tags"/>
+                            </group>
+                        </page>
+                        <page string="Previews &amp; Screenshots" name="previews">
+                            <field name="preview_ids">
+                                <list editable="bottom">
+                                    <field name="name"/>
+                                    <field name="preview_type"/>
+                                    <field name="screenshot" widget="image" class="o_avatar"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="industry_theme_view_tree" model="ir.ui.view">
+        <field name="name">industry.theme.list</field>
+        <field name="model">industry.theme</field>
+        <field name="arch" type="xml">
+            <list string="Industry Themes">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="category_id"/>
+                <field name="palette_id"/>
+                <field name="font_id"/>
+                <field name="layout_id"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="industry_theme_view_kanban" model="ir.ui.view">
+        <field name="name">industry.theme.kanban</field>
+        <field name="model">industry.theme</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="category_id"/>
+                <templates>
+                    <t t-name="card">
+                        <div class="oe_kanban_global_click p-3 border-0 shadow-sm rounded-3">
+                            <div class="row align-items-center">
+                                <div class="col-8">
+                                    <h4 class="fw-bold text-primary mb-1"><field name="name"/></h4>
+                                    <span class="badge bg-secondary mb-2"><field name="category_id"/></span>
+                                    <div class="text-muted small">Code: <field name="code"/></div>
+                                </div>
+                                <div class="col-4 text-end">
+                                    <button class="btn btn-sm btn-outline-primary" type="object" name="action_duplicate">Clone</button>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="action_industry_theme" model="ir.actions.act_window">
+        <field name="name">Industry Themes</field>
+        <field name="res_model">industry.theme</field>
+        <field name="view_mode">kanban,list,form</field>
+    </record>
+
+    <!-- PALETTE VIEWS -->
+    <record id="industry_theme_palette_view_form" model="ir.ui.view">
+        <field name="name">industry.theme.palette.form</field>
+        <field name="model">industry.theme.palette</field>
+        <field name="arch" type="xml">
+            <form string="Color Palette">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <group string="Hex Color Settings">
+                        <group>
+                            <field name="primary_color" widget="color"/>
+                            <field name="secondary_color" widget="color"/>
+                        </group>
+                        <group>
+                            <field name="accent_color" widget="color"/>
+                            <field name="bg_color" widget="color"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="industry_theme_palette_view_tree" model="ir.ui.view">
+        <field name="name">industry.theme.palette.list</field>
+        <field name="model">industry.theme.palette</field>
+        <field name="arch" type="xml">
+            <list string="Color Palettes">
+                <field name="name"/>
+                <field name="primary_color"/>
+                <field name="secondary_color"/>
+                <field name="accent_color"/>
+                <field name="bg_color"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_industry_palette" model="ir.actions.act_window">
+        <field name="name">Color Palettes</field>
+        <field name="res_model">industry.theme.palette</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- FONT VIEWS -->
+    <record id="industry_theme_font_view_form" model="ir.ui.view">
+        <field name="name">industry.theme.font.form</field>
+        <field name="model">industry.theme.font</field>
+        <field name="arch" type="xml">
+            <form string="Typography Font">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="font_family" placeholder="e.g. 'Outfit', sans-serif"/>
+                        <field name="font_url" placeholder="e.g. https://fonts.googleapis.com/css2?..."/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="industry_theme_font_view_tree" model="ir.ui.view">
+        <field name="name">industry.theme.font.list</field>
+        <field name="model">industry.theme.font</field>
+        <field name="arch" type="xml">
+            <list string="Fonts">
+                <field name="name"/>
+                <field name="font_family"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_industry_font" model="ir.actions.act_window">
+        <field name="name">Fonts</field>
+        <field name="res_model">industry.theme.font</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- LAYOUT VIEWS -->
+    <record id="industry_theme_layout_view_form" model="ir.ui.view">
+        <field name="name">industry.theme.layout.form</field>
+        <field name="model">industry.theme.layout</field>
+        <field name="arch" type="xml">
+            <form string="Layout Settings">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <group>
+                        <group string="Dimensions &amp; Spacing">
+                            <field name="border_radius"/>
+                            <field name="spacing_scale"/>
+                        </group>
+                        <group string="Decoration Style">
+                            <field name="button_style"/>
+                            <field name="card_style"/>
+                            <field name="shadow_style"/>
+                            <field name="animation_style"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="industry_theme_layout_view_tree" model="ir.ui.view">
+        <field name="name">industry.theme.layout.list</field>
+        <field name="model">industry.theme.layout</field>
+        <field name="arch" type="xml">
+            <list string="Layouts">
+                <field name="name"/>
+                <field name="border_radius"/>
+                <field name="button_style"/>
+                <field name="card_style"/>
+                <field name="shadow_style"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_industry_layout" model="ir.actions.act_window">
+        <field name="name">Layouts</field>
+        <field name="res_model">industry.theme.layout</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- CATEGORY VIEWS -->
+    <record id="industry_theme_category_view_form" model="ir.ui.view">
+        <field name="name">industry.theme.category.form</field>
+        <field name="model">industry.theme.category</field>
+        <field name="arch" type="xml">
+            <form string="Category">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="description"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_industry_category" model="ir.actions.act_window">
+        <field name="name">Categories</field>
+        <field name="res_model">industry.theme.category</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- MENU ITEMS -->
+    <!-- Place Theme Control Center under Configuration -->
+    <menuitem id="menu_website_theme_settings"
+              name="Theme Settings"
+              parent="website.menu_website_global_configuration"
+              action="action_website_theme_settings"
+              sequence="15"/>
+
+    <!-- Configurations Submenu -->
+    <menuitem id="menu_industry_theme_config"
+              name="Theme Configurations"
+              parent="website.menu_website_global_configuration"
+              sequence="50"/>
+
+    <menuitem id="menu_industry_themes"
+              name="Themes"
+              parent="menu_industry_theme_config"
+              action="action_industry_theme"
+              sequence="10"/>
+
+    <menuitem id="menu_industry_palettes"
+              name="Palettes"
+              parent="menu_industry_theme_config"
+              action="action_industry_palette"
+              sequence="20"/>
+
+    <menuitem id="menu_industry_fonts"
+              name="Fonts"
+              parent="menu_industry_theme_config"
+              action="action_industry_font"
+              sequence="30"/>
+
+    <menuitem id="menu_industry_layouts"
+              name="Layout Settings"
+              parent="menu_industry_theme_config"
+              action="action_industry_layout"
+              sequence="40"/>
+
+    <menuitem id="menu_industry_categories"
+              name="Industry Categories"
+              parent="menu_industry_theme_config"
+              action="action_industry_category"
+              sequence="50"/>
+
+    <!-- Action for importing a theme -->
+    <menuitem id="menu_industry_theme_import"
+              name="Import Theme"
+              parent="menu_industry_theme_config"
+              action="action_theme_import_wizard"
+              sequence="60"/>
+</odoo>

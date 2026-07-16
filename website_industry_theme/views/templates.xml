@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- CSS VARIABLE AND ASSET INJECTION -->
+    <template id="layout_inject_industry_theme" inherit_id="website.layout" name="Industry Theme Style Injector">
+        <!-- Set html tag industry-theme attribute -->
+        <xpath expr="//html" position="attributes">
+            <attribute name="t-att-data-industry-theme">
+                (website.env['industry.theme'].browse(int(request.params.get('preview_theme_id'))).code if request.params.get('preview_theme_id') and request.env.user.has_group('website.group_website_designer') else False) or (website.industry_theme_id.code if website.industry_theme_id else '')
+            </attribute>
+            <attribute name="t-att-data-hover-effects">
+                (website.env['industry.theme'].browse(int(request.params.get('preview_theme_id'))).hover_effects_style if request.params.get('preview_theme_id') and request.env.user.has_group('website.group_website_designer') else False) or (website.industry_theme_id.hover_effects_style if website.industry_theme_id else 'none')
+            </attribute>
+        </xpath>
+
+        <!-- Inject dynamic styles and variables -->
+        <xpath expr="//head" position="inside">
+            <t t-set="preview_theme_val" t-value="website.env['industry.theme'].browse(int(request.params.get('preview_theme_id'))) if request.params.get('preview_theme_id') and request.env.user.has_group('website.group_website_designer') else False"/>
+            <t t-set="active_theme_val" t-value="preview_theme_val or website.industry_theme_id"/>
+
+            <t t-if="active_theme_val">
+                <!-- Fetch Google Fonts if URL specified -->
+                <link t-if="active_theme_val.font_id.font_url" rel="stylesheet" t-att-href="active_theme_val.font_id.font_url"/>
+                
+                <style id="industry_theme_injected_variables">
+                    :root {
+                        /* Industry Theme Color Palette Configuration */
+                        --industry-primary: <t t-esc="active_theme_val.palette_id.primary_color"/>;
+                        --industry-secondary: <t t-esc="active_theme_val.palette_id.secondary_color"/>;
+                        --industry-accent: <t t-esc="active_theme_val.palette_id.accent_color"/>;
+                        --industry-bg: <t t-esc="active_theme_val.palette_id.bg_color"/>;
+                        
+                        /* Industry Typography Configuration */
+                        --industry-font-family: <t t-esc="active_theme_val.font_id.font_family"/>;
+                        
+                        /* Layout Customization Parameters */
+                        --industry-border-radius: <t t-esc="active_theme_val.layout_id.border_radius"/>;
+                        --industry-shadow: <t t-esc="active_theme_val.layout_id.shadow_style"/>;
+                        
+                        /* Odoo Variable Overrides */
+                        --o-color-1: var(--industry-primary) !important;
+                        --o-color-2: var(--industry-secondary) !important;
+                        --o-color-3: var(--industry-accent) !important;
+                        --o-color-4: var(--industry-bg) !important;
+
+                        --bs-primary: var(--industry-primary) !important;
+                        --bs-secondary: var(--industry-secondary) !important;
+                        --bs-body-bg: var(--industry-bg) !important;
+                        --bs-body-font-family: var(--industry-font-family) !important;
+                        --bs-border-radius: var(--industry-border-radius) !important;
+                    }
+                </style>
+
+                <!-- Load Dynamic theme bundles on-demand -->
+                <t t-if="active_theme_val.code == 'vegetables'">
+                    <t t-call-assets="website_industry_theme.theme_vegetables" t-css="true" t-js="false"/>
+                </t>
+                <t t-elif="active_theme_val.code == 'fashion'">
+                    <t t-call-assets="website_industry_theme.theme_fashion" t-css="true" t-js="false"/>
+                </t>
+                <t t-elif="active_theme_val.code == 'manufacturing'">
+                    <t t-call-assets="website_industry_theme.theme_manufacturing" t-css="true" t-js="false"/>
+                </t>
+                <t t-elif="active_theme_val.code == 'restaurant'">
+                    <t t-call-assets="website_industry_theme.theme_restaurant" t-css="true" t-js="false"/>
+                </t>
+                <t t-elif="active_theme_val.code == 'pharmacy'">
+                    <t t-call-assets="website_industry_theme.theme_pharmacy" t-css="true" t-js="false"/>
+                </t>
+            </t>
+        </xpath>
+
+        <!-- Append loading animation, back to top and WhatsApp widgets to body -->
+        <xpath expr="//div[@id='wrapwrap']" position="before">
+            <t t-set="preview_theme_val" t-value="website.env['industry.theme'].browse(int(request.params.get('preview_theme_id'))) if request.params.get('preview_theme_id') and request.env.user.has_group('website.group_website_designer') else False"/>
+            <t t-set="active_theme_val" t-value="preview_theme_val or website.industry_theme_id"/>
+
+            <t t-if="active_theme_val">
+                <!-- Page Loader -->
+                <div t-if="active_theme_val.loading_animation_enabled" class="industry-theme-loader">
+                    <div class="spinner"/>
+                </div>
+
+                <!-- Floating WhatsApp Widget -->
+                <a t-if="active_theme_val.whatsapp_enabled"
+                   t-attf-href="https://wa.me/#{active_theme_val.whatsapp_number}"
+                   target="_blank"
+                   class="industry-theme-whatsapp">
+                    <i class="fa fa-whatsapp"/>
+                </a>
+
+                <!-- Back to Top Button -->
+                <a t-if="active_theme_val.back_to_top_enabled"
+                   href="#"
+                   class="industry-theme-back-to-top">
+                    <i class="fa fa-chevron-up"/>
+                </a>
+            </t>
+        </xpath>
+    </template>
+</odoo>

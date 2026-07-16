@@ -1,0 +1,191 @@
+/* ===================================================================
+   Intelligent Industry Theme Engine — Base Variables & Layouts
+   =================================================================== */
+
+// General variables scoped under html[data-industry-theme] or #wrapwrap
+html[data-industry-theme] {
+    scroll-behavior: smooth;
+
+    // Layout spacings
+    --spacing-scale-compact: 1rem;
+    --spacing-scale-normal: 2.5rem;
+    --spacing-scale-loose: 5rem;
+
+    // Set layout-specific spacings based on selected theme scale
+    &[data-industry-theme] {
+        font-family: var(--industry-font-family, inherit) !important;
+        background-color: var(--industry-bg, #ffffff) !important;
+        color: #212529;
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--industry-font-family, inherit) !important;
+            font-weight: 700;
+        }
+
+        // Apply theme color palette to base elements
+        a {
+            color: var(--industry-primary);
+            &:hover {
+                color: var(--industry-secondary);
+            }
+        }
+    }
+
+    // Dynamic button styles
+    .btn-primary {
+        background-color: var(--industry-primary) !important;
+        border-color: var(--industry-primary) !important;
+        color: #ffffff !important;
+        border-radius: var(--industry-border-radius) !important;
+        box-shadow: var(--industry-shadow) !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+        &:hover {
+            background-color: var(--industry-secondary) !important;
+            border-color: var(--industry-secondary) !important;
+            transform: translateY(-2px);
+        }
+    }
+
+    .btn-secondary {
+        background-color: var(--industry-secondary) !important;
+        border-color: var(--industry-secondary) !important;
+        color: #ffffff !important;
+        border-radius: var(--industry-border-radius) !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+        &:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+    }
+
+    .btn-outline-primary {
+        color: var(--industry-primary) !important;
+        border-color: var(--industry-primary) !important;
+        border-radius: var(--industry-border-radius) !important;
+        
+        &:hover {
+            background-color: var(--industry-primary) !important;
+            border-color: var(--industry-primary) !important;
+            color: #ffffff !important;
+        }
+    }
+
+    // Dynamic card styles
+    .card, .o_wsale_product_grid_wrapper .oe_product {
+        border-radius: var(--industry-border-radius) !important;
+        box-shadow: var(--industry-shadow) !important;
+        background-color: #ffffff;
+        border: 1px solid rgba(0,0,0,0.08) !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    // Hover effects styles
+    &[data-hover-effects="lift"] {
+        .card:hover, .oe_product:hover {
+            transform: translateY(-8px) !important;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.12) !important;
+        }
+    }
+    &[data-hover-effects="scale"] {
+        .card:hover, .oe_product:hover {
+            transform: scale(1.03) !important;
+        }
+    }
+    &[data-hover-effects="glow"] {
+        .card:hover, .oe_product:hover {
+            box-shadow: 0 0 15px var(--industry-accent) !important;
+            border-color: var(--industry-accent) !important;
+        }
+    }
+
+    // Floating WhatsApp Widget
+    .industry-theme-whatsapp {
+        position: fixed;
+        bottom: 24px;
+        left: 24px;
+        z-index: 9999;
+        background-color: #25D366;
+        color: white !important;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        font-size: 32px;
+        transition: all 0.3s ease;
+
+        &:hover {
+            transform: scale(1.1) rotate(8deg);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+        }
+    }
+
+    // Back to top Widget
+    .industry-theme-back-to-top {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        z-index: 9999;
+        background-color: var(--industry-primary);
+        color: white !important;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        font-size: 20px;
+        transition: all 0.3s ease;
+        opacity: 0;
+        visibility: hidden;
+
+        &.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        &:hover {
+            transform: translateY(-4px);
+            background-color: var(--industry-secondary);
+        }
+    }
+}
+
+// Page Loader Animation
+.industry-theme-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #ffffff;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+
+    &.loaded {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .spinner {
+        width: 50px;
+        height: 50px;
+        border: 5px solid rgba(0,0,0,0.1);
+        border-top-color: var(--industry-primary, #007bff);
+        border-radius: 50%;
+        animation: spin 1s infinite linear;
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- VEGETABLES THEME SNIPPETS -->
+    <template id="s_vegetable_hero" name="Vegetable Hero Banner">
+        <section class="o_colored_level py-5" data-snippet="website_industry_theme.s_vegetable_hero" data-name="Vegetable Hero" style="background-color: var(--industry-bg, #f4fcf6);">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <span class="organic-badge mb-3">
+                            <i class="fa fa-leaf"/> 100% Organic &amp; Fresh
+                        </span>
+                        <h1 class="display-3 fw-bold mb-3 text-success">Fresh Vegetables Delivered Daily</h1>
+                        <p class="lead mb-4">Direct from the farms to your kitchen. Taste the natural crispness and premium quality of handpicked organic vegetables.</p>
+                        <a href="/shop" class="btn btn-primary btn-lg px-4 py-3">Shop Fresh Now</a>
+                    </div>
+                    <div class="col-lg-6 text-center mt-4 mt-lg-0">
+                        <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&amp;auto=format&amp;fit=crop&amp;q=60" alt="Fresh Vegetables" class="img-fluid rounded-4 shadow-lg" loading="lazy" style="max-height: 400px; object-fit: cover; width: 100%;"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="s_organic_banner" name="Organic Promo Banner">
+        <section class="o_colored_level py-5 wood-card" data-snippet="website_industry_theme.s_organic_banner" data-name="Organic Promo">
+            <div class="container text-center">
+                <h2 class="h1 fw-bold text-success mb-2">Seasonal Farmer Story Offers</h2>
+                <p class="lead mb-4">Save 20% on all green leafy salads this week. Free farm delivery for orders above $30.</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <a href="/shop" class="btn btn-primary px-4 py-2">Get Deal</a>
+                    <a href="/blog" class="btn btn-outline-primary px-4 py-2">Farmer Stories</a>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <!-- FASHION THEME SNIPPETS -->
+    <template id="s_fashion_hero" name="Fashion Hero Lookbook">
+        <section class="o_colored_level py-5" data-snippet="website_industry_theme.s_fashion_hero" data-name="Fashion Hero" style="background-color: #000000; color: #ffffff;">
+            <div class="container">
+                <div class="row align-items-center" style="min-height: 500px;">
+                    <div class="col-lg-5 offset-lg-1">
+                        <span class="text-uppercase tracking-wider text-muted small d-block mb-3" style="letter-spacing: 3px;">Autumn Winter 2026</span>
+                        <h1 class="display-2 fw-light mb-4 text-white" style="font-family: 'Playfair Display', serif;">ELEGANCE IN SIMPLICITY</h1>
+                        <p class="mb-5 text-muted" style="font-size: 16px; line-height: 1.8;">Explore our new capsule collection designed for the modern lifestyle. Pure silhouettes, premium materials, and timeless design.</p>
+                        <a href="/shop" class="btn btn-primary btn-lg">DISCOVER COLLECTION</a>
+                    </div>
+                    <div class="col-lg-6 text-center">
+                        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&amp;auto=format&amp;fit=crop&amp;q=60" alt="Fashion Editorial" class="img-fluid shadow-lg" loading="lazy" style="max-height: 500px; width: 80%; object-fit: cover;"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="s_lookbook_collection" name="Editorial Lookbook Carousel">
+        <section class="o_colored_level py-5" data-snippet="website_industry_theme.s_lookbook_collection" data-name="Lookbook Collection">
+            <div class="container-fluid px-4">
+                <h3 class="h1 text-center fashion-title mb-5">THE LOOKBOOK</h3>
+                <div class="lookbook-grid">
+                    <div class="lookbook-item col-span-4" style="grid-column: span 4;">
+                        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=400&amp;auto=format&amp;fit=crop&amp;q=60" alt="Lookbook 1" class="img-fluid w-100" style="height: 350px; object-fit: cover;" loading="lazy"/>
+                        <h4 class="mt-2 fs-6 text-uppercase fw-bold text-center">Casual Comfort</h4>
+                    </div>
+                    <div class="lookbook-item col-span-4" style="grid-column: span 4;">
+                        <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=400&amp;auto=format&amp;fit=crop&amp;q=60" alt="Lookbook 2" class="img-fluid w-100" style="height: 350px; object-fit: cover;" loading="lazy"/>
+                        <h4 class="mt-2 fs-6 text-uppercase fw-bold text-center">Urban Silhouette</h4>
+                    </div>
+                    <div class="lookbook-item col-span-4" style="grid-column: span 4;">
+                        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400&amp;auto=format&amp;fit=crop&amp;q=60" alt="Lookbook 3" class="img-fluid w-100" style="height: 350px; object-fit: cover;" loading="lazy"/>
+                        <h4 class="mt-2 fs-6 text-uppercase fw-bold text-center">Evening Luxury</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <!-- MANUFACTURING THEME SNIPPETS -->
+    <template id="s_factory_hero" name="Industrial Machinery Banner">
+        <section class="o_colored_level py-5" data-snippet="website_industry_theme.s_factory_hero" data-name="Factory Hero" style="background-color: #0f172a; color: #ffffff;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-7">
+                        <span class="badge bg-warning text-dark mb-3">ISO 9001:2015 CERTIFIED</span>
+                        <h1 class="display-4 fw-bold text-white">Precision Engineering &amp; Industrial Solutions</h1>
+                        <p class="lead text-muted my-4">Leveraging state-of-the-art automation and manufacturing technologies to deliver high-capacity industrial systems worldwide.</p>
+                        <div class="d-flex gap-3">
+                            <a href="/contactus" class="btn btn-primary px-4 py-2">Request Technical Quote</a>
+                            <a href="#" class="btn btn-outline-light px-4 py-2">Download Capabilities File</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 text-center mt-4 mt-lg-0">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&amp;auto=format&amp;fit=crop&amp;q=60" alt="Machinery Plant" class="img-fluid rounded-2 shadow-lg" loading="lazy" style="max-height: 350px; object-fit: cover; width: 100%;"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="s_services_grid" name="Industrial Services &amp; Capabilities">
+        <section class="o_colored_level py-5" data-snippet="website_industry_theme.s_services_grid" data-name="Services Grid">
+            <div class="container">
+                <h3 class="h2 text-center mb-5 fw-bold">OUR CORE CAPABILITIES</h3>
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="certificate-card">
+                            <i class="fa fa-cogs fa-3x mb-3 text-primary"/>
+                            <h4 class="h5 fw-bold">Custom Assembly</h4>
+                            <p class="text-muted small">Specialized robotic automation assembly lines tailored for B2B applications.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="certificate-card">
+                            <i class="fa fa-wrench fa-3x mb-3 text-primary"/>
+                            <h4 class="h5 fw-bold">Precision Tooling</h4>
+                            <p class="text-muted small">High-tolerance metal forging, turning, and computer-controlled milling.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="certificate-card">
+                            <i class="fa fa-shield fa-3x mb-3 text-primary"/>
+                            <h4 class="h5 fw-bold">Quality Testing</h4>
+                            <p class="text-muted small">Rigorous non-destructive testing and certifications mapping.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <!-- RESTAURANT THEME SNIPPETS -->
+    <template id="s_restaurant_hero" name="Cozy Restaurant Banner">
+        <section class="o_colored_level py-5" data-snippet="website_industry_theme.s_restaurant_hero" data-name="Restaurant Hero" style="background-color: #FFF8E1; border-bottom: 2px solid #E0D4C3;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <span class="badge bg-danger mb-3">MICHELIN STARS AWARDED</span>
+                        <h1 class="display-3 fw-bold text-dark mb-3" style="font-family: 'Lora', serif;">Savor the Craft &amp; Fresh Flavors</h1>
+                        <p class="lead text-dark-50 mb-4">Indulge in a curated dining experience prepared by award-winning chefs. Local, organic ingredients cooked with age-old secrets.</p>
+                        <a href="/contactus" class="btn btn-primary btn-lg px-4 py-3">Reserve Table Online</a>
+                    </div>
+                    <div class="col-lg-6 text-center mt-4 mt-lg-0">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&amp;auto=format&amp;fit=crop&amp;q=60" alt="Restaurant Interior" class="img-fluid rounded-5 shadow-lg" loading="lazy" style="max-height: 400px; object-fit: cover; width: 100%;"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="s_menu_today" name="Chef's Special Dishes">
+        <section class="o_colored_level py-5" data-snippet="website_industry_theme.s_menu_today" data-name="Today's Menu">
+            <div class="container">
+                <h3 class="h1 text-center text-brown mb-5" style="font-family: 'Lora', serif;">TODAY'S SPECIALS</h3>
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="dish-highlight card h-100 p-0 shadow-sm border-0">
+                            <span class="dish-price">$28</span>
+                            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&amp;auto=format&amp;fit=crop&amp;q=60" class="card-img-top img-fluid" style="height: 200px; object-fit: cover;" loading="lazy" alt="Dish 1"/>
+                            <div class="card-body p-4">
+                                <h4 class="h5 fw-bold">Fresh Salmon Salad</h4>
+                                <p class="text-muted small">Wood-smoked wild salmon served over freshly-harvested field organic greens.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="dish-highlight card h-100 p-0 shadow-sm border-0">
+                            <span class="dish-price">$34</span>
+                            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&amp;auto=format&amp;fit=crop&amp;q=60" class="card-img-top img-fluid" style="height: 200px; object-fit: cover;" loading="lazy" alt="Dish 2"/>
+                            <div class="card-body p-4">
+                                <h4 class="h5 fw-bold">Truffle Artisan Pizza</h4>
+                                <p class="text-muted small">Hand-tossed sourdough with aromatic black truffles, wild mushrooms, and buffalo mozzarella.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="dish-highlight card h-100 p-0 shadow-sm border-0">
+                            <span class="dish-price">$18</span>
+                            <img src="https://images.unsplash.com/photo-1524351199679-46cddf530c04?w=400&amp;auto=format&amp;fit=crop&amp;q=60" class="card-img-top img-fluid" style="height: 200px; object-fit: cover;" loading="lazy" alt="Dish 3"/>
+                            <div class="card-body p-4">
+                                <h4 class="h5 fw-bold">House-Baked Croissant</h4>
+                                <p class="text-muted small">Light, crispy, buttery puff pastry layers fresh from our bakery ovens.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <!-- PHARMACY THEME SNIPPETS -->
+    <template id="s_pharmacy_hero" name="Clinical Pharmacy Hero">
+        <section class="o_colored_level py-5" data-snippet="website_industry_theme.s_pharmacy_hero" data-name="Pharmacy Hero" style="background-color: #E0F2F1;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <span class="consultation-badge">
+                            <i class="fa fa-clock-o"/> 24/7 Professional Medical Help
+                        </span>
+                        <h1 class="display-4 fw-bold mb-3 text-teal">Your Trusted Healthcare Partner</h1>
+                        <p class="lead mb-4">Browse emergency medicine, consult verified clinical practitioners, and upload prescriptions for instant home delivery.</p>
+                        <a href="/shop" class="btn btn-primary px-4 py-3">Find Medicine Online</a>
+                    </div>
+                    <div class="col-lg-6 text-center mt-4 mt-lg-0">
+                        <img src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=600&amp;auto=format&amp;fit=crop&amp;q=60" alt="Pharmacy Clinic" class="img-fluid rounded-3 shadow-sm" loading="lazy" style="max-height: 380px; object-fit: cover; width: 100%;"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="s_trust_banner" name="Emergency &amp; Upload Action">
+        <section class="o_colored_level py-5" data-snippet="website_industry_theme.s_trust_banner" data-name="Pharmacy Action">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 mb-4 mb-lg-0">
+                        <div class="emergency-highlight-card">
+                            <h4 class="fw-bold mb-2">Emergency Help Line</h4>
+                            <p class="mb-3">Immediate medical consultation and rapid response pharmacy courier services.</p>
+                            <div class="phone-call text-danger">
+                                <i class="fa fa-phone"/> 1-800-MED-ALERT
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="prescription-upload-block">
+                            <i class="fa fa-upload fa-3x mb-3 text-teal"/>
+                            <h4 class="fw-bold">Upload Your Doctor Prescription</h4>
+                            <p class="text-muted small">We verify, compile, and package your prescription items in minutes.</p>
+                            <span class="btn btn-outline-primary mt-2">Choose PDF or Image</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <!-- INJECT ALL INTO WEBSITE BUILDER SIDEBAR -->
+    <template id="snippets" inherit_id="website.snippets" name="Industry Themes Snippets Panel">
+        <xpath expr="//snippets[@id='snippet_structure']/*[last()]" position="after">
+            <!-- Add Category Group in Odoo Editor Sidebar -->
+            <t t-snippet="website_industry_theme.s_vegetable_hero" string="Vegetable Hero" group="industry_themes" t-thumbnail="/website_industry_theme/static/src/img/thumbs/s_veg_hero.png"/>
+            <t t-snippet="website_industry_theme.s_organic_banner" string="Organic Banner" group="industry_themes" t-thumbnail="/website_industry_theme/static/src/img/thumbs/s_organic.png"/>
+            <t t-snippet="website_industry_theme.s_fashion_hero" string="Fashion Hero" group="industry_themes" t-thumbnail="/website_industry_theme/static/src/img/thumbs/s_fashion_hero.png"/>
+            <t t-snippet="website_industry_theme.s_lookbook_collection" string="Lookbook Showcase" group="industry_themes" t-thumbnail="/website_industry_theme/static/src/img/thumbs/s_lookbook.png"/>
+            <t t-snippet="website_industry_theme.s_factory_hero" string="Factory Hero" group="industry_themes" t-thumbnail="/website_industry_theme/static/src/img/thumbs/s_factory.png"/>
+            <t t-snippet="website_industry_theme.s_services_grid" string="Capabilities Grid" group="industry_themes" t-thumbnail="/website_industry_theme/static/src/img/thumbs/s_services.png"/>
+            <t t-snippet="website_industry_theme.s_restaurant_hero" string="Restaurant Hero" group="industry_themes" t-thumbnail="/website_industry_theme/static/src/img/thumbs/s_rest_hero.png"/>
+            <t t-snippet="website_industry_theme.s_menu_today" string="Chef Specialties" group="industry_themes" t-thumbnail="/website_industry_theme/static/src/img/thumbs/s_menu.png"/>
+            <t t-snippet="website_industry_theme.s_pharmacy_hero" string="Pharmacy Hero" group="industry_themes" t-thumbnail="/website_industry_theme/static/src/img/thumbs/s_pharm_hero.png"/>
+            <t t-snippet="website_industry_theme.s_trust_banner" string="Emergency Call-to-action" group="industry_themes" t-thumbnail="/website_industry_theme/static/src/img/thumbs/s_trust.png"/>
+        </xpath>
+
+        <!-- Register group details -->
+        <xpath expr="//snippets[@id='snippet_groups']" position="inside">
+            <t snippet-group="industry_themes" t-snippet="website.s_snippet_group" string="Industry Themes" t-thumbnail="/website_industry_theme/static/src/img/thumbs/group_icon.png"/>
+        </xpath>
+    </template>
+</odoo>

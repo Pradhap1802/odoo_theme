@@ -1,0 +1,68 @@
+/* Pharmacy Industry Theme Style Sheet */
+
+html[data-industry-theme="pharmacy"] {
+    // Clinical Trustworthy Styles
+    --medical-teal: #00897B;
+    --medical-blue: #0288D1;
+    --medical-red: #E53935;
+    
+    // Modern highly legible styling
+    h1, h2, h3, h4 {
+        color: #263238;
+        font-weight: 600;
+    }
+
+    // Standard card styling
+    .card, .oe_product {
+        border-radius: 8px !important;
+        box-shadow: 0 4px 10px rgba(0, 137, 123, 0.05) !important;
+        border: 1px solid #E0F2F1 !important;
+        
+        &:hover {
+            box-shadow: 0 8px 20px rgba(0, 137, 123, 0.1) !important;
+            border-color: var(--medical-teal) !important;
+        }
+    }
+
+    // Emergency Block layout
+    .emergency-highlight-card {
+        background-color: #FFEBEE;
+        border: 2px solid #FFCDD2;
+        color: var(--medical-red);
+        border-radius: 8px;
+        padding: 2rem;
+        
+        .phone-call {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+    }
+
+    // Consultation contact block
+    .consultation-badge {
+        display: inline-block;
+        background-color: rgba(2, 136, 209, 0.1);
+        color: var(--medical-blue);
+        border-radius: 100px;
+        padding: 4px 12px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 12px;
+    }
+
+    // Prescription Upload block
+    .prescription-upload-block {
+        background-color: #E0F2F1;
+        border: 2px dashed var(--medical-teal);
+        border-radius: 8px;
+        padding: 3rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        
+        &:hover {
+            background-color: #B2DFDB;
+            cursor: pointer;
+        }
+    }
+}
